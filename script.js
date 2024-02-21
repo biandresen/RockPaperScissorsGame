@@ -1,10 +1,11 @@
 function getComputerChoice() {
-  let choice;
-  let selector = Math.floor(Math.random() * 100 + 1);
-  if (selector > 66) choice = "rock";
-  else if (selector <= 66 && selector >= 33) choice = "paper";
-  else choice = "scissors";
-  return choice;
+  let computerChoice;
+  let weaponSelector = Math.floor(Math.random() * 100 + 1);
+  if (weaponSelector > 66) computerChoice = "rock";
+  else if (weaponSelector <= 66 && weaponSelector >= 33)
+    computerChoice = "paper";
+  else computerChoice = "scissors";
+  return computerChoice;
 }
 
 function getPlayerChoice() {
@@ -14,7 +15,26 @@ function getPlayerChoice() {
     playerChoice === "paper" ||
     playerChoice === "scissors"
   ) {
-    console.log(playerChoice);
     return playerChoice;
   } else return alert("Your input was invalid, try again") + getPlayerChoice();
 }
+
+function battle() {
+  let playerWeapon = getPlayerChoice();
+  let computerWeapon = getComputerChoice();
+
+  if (
+    (playerWeapon === "rock" && computerWeapon === "scissors") ||
+    (playerWeapon === "paper" && computerWeapon === "rock") ||
+    (playerWeapon === "scissors" && computerWeapon === "paper")
+  ) {
+    alert("Computer chose: " + computerWeapon + "\n\nYOU WIN!");
+  } else if (playerWeapon === computerWeapon) {
+    alert("Computer chose: " + computerWeapon + "\n\nTIE!\n\nTRY AGAIN!");
+    battle();
+  } else
+    alert("Computer chose: " + computerWeapon + "\n\nYOU LOOSE!\n\nTRY AGAIN!");
+  battle();
+}
+
+battle();
