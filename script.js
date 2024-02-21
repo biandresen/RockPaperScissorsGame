@@ -10,6 +10,7 @@ function getComputerChoice() {
 
 function getPlayerChoice() {
   let playerChoice = prompt("Choose by writing 'rock, 'paper' or 'scissors' ");
+  playerChoice = playerChoice.toLocaleLowerCase();
   if (
     playerChoice === "rock" ||
     playerChoice === "paper" ||
