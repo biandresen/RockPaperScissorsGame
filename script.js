@@ -1,3 +1,6 @@
+let playerScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
   let computerChoice;
   let weaponSelector = Math.floor(Math.random() * 100 + 1);
@@ -23,18 +26,43 @@ function getPlayerChoice() {
 function battle() {
   let playerWeapon = getPlayerChoice();
   let computerWeapon = getComputerChoice();
-
   if (
     (playerWeapon === "rock" && computerWeapon === "scissors") ||
     (playerWeapon === "paper" && computerWeapon === "rock") ||
     (playerWeapon === "scissors" && computerWeapon === "paper")
   ) {
-    alert("Computer chose: " + computerWeapon + "\n\nYOU WIN!");
-  } else if (playerWeapon === computerWeapon) {
-    alert("Computer chose: " + computerWeapon + "\n\nTIE!\n\nTRY AGAIN!");
+    playerScore++;
+    alert(
+      "Computer chose: " +
+        computerWeapon +
+        "\n\nYOU WIN!\n\nYou " +
+        playerScore +
+        " - " +
+        computerScore +
+        "  Computer"
+    );
     battle();
-  } else
-    alert("Computer chose: " + computerWeapon + "\n\nYOU LOOSE!\n\nTRY AGAIN!");
+  } else if (playerWeapon === computerWeapon) {
+    alert(
+      "Computer chose: " +
+        computerWeapon +
+        "\n\nTIE!\n\nTRY AGAIN!\n\nYou " +
+        playerScore +
+        " - " +
+        computerScore +
+        "  Computer"
+    );
+    battle();
+  } else computerScore++;
+  alert(
+    "Computer chose: " +
+      computerWeapon +
+      "\n\nYOU LOOSE!\n\nYou " +
+      playerScore +
+      " - " +
+      computerScore +
+      "  Computer"
+  );
   battle();
 }
 
