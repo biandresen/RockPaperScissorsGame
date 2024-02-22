@@ -3,6 +3,12 @@ let playerScore = 0;
 let computerScore = 0;
 let bestOfChoice = 0;
 
+//Starts the game with welcome message and goes into the game
+function startGame() {
+  alert("WELCOME!\n\nLET'S PLAY 'ROCK, PAPER, SCISSORS'!");
+  bestOfDeclaration();
+}
+
 //Declares game type of "best of 3", "best of 5" or "best of 10"
 function bestOfDeclaration() {
   bestOfChoice = prompt(
@@ -97,9 +103,9 @@ function gameOver() {
     "Thank you for playing!\n\nThis game is over, but you can try again by typing 'play'"
   );
   playAgain = playAgain.toLocaleLowerCase();
-  if (playAgain === "play") bestOfDeclaration();
+  if (playAgain === "play") startGame();
   else return alert("Your input was invalid, try again") + gameOver();
 }
 
 //Initializes the game
-bestOfDeclaration();
+startGame();
