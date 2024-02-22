@@ -38,13 +38,14 @@ function getPlayerChoice() {
     "Choose by typing:\nrock / r\npaper / p\nscissors / s "
   );
   playerChoice = playerChoice.toLocaleLowerCase();
+  //Ables the choice between shorthand and longhand for each type because it's much easier with short.
   if (
-    playerChoice === "rock" ||
     playerChoice === "r" ||
-    playerChoice === "paper" ||
+    playerChoice === "rock" ||
     playerChoice === "p" ||
-    playerChoice === "scissors" ||
-    playerChoice === "s"
+    playerChoice === "paper" ||
+    playerChoice === "s" ||
+    playerChoice === "scissors"
   ) {
     return playerChoice;
   } else return alert("Your input was invalid, try again") + getPlayerChoice();
@@ -54,16 +55,15 @@ function getPlayerChoice() {
 function battle() {
   let playerWeapon = getPlayerChoice();
   let computerWeapon = getComputerChoice();
+  //Making r, p or s become rock, paper or scissors so it can be used correctly to compare weapons
+  if (playerWeapon === "r") playerWeapon = "rock";
+  else if (playerWeapon === "p") playerWeapon = "paper";
+  else if (playerWeapon === "s") playerWeapon = "scissors";
+  //Comparing weapons to find out who wins
   if (
-    playerWeapon === "rock" ||
-    ("r" && computerWeapon === "scissors") ||
-    "s" ||
-    playerWeapon === "paper" ||
-    ("p" && computerWeapon === "rock") ||
-    "r" ||
-    playerWeapon === "scissors" ||
-    ("s" && computerWeapon === "paper") ||
-    "p"
+    (playerWeapon === "rock" && computerWeapon === "scissors") ||
+    (playerWeapon === "paper" && computerWeapon === "rock") ||
+    (playerWeapon === "scissors" && computerWeapon === "paper")
   ) {
     playerScore++;
     alert(
