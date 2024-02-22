@@ -34,12 +34,17 @@ function getComputerChoice() {
 
 //Gets a weapon choice from the player based on prompt input
 function getPlayerChoice() {
-  let playerChoice = prompt("Choose by writing 'rock, 'paper' or 'scissors' ");
+  let playerChoice = prompt(
+    "Choose by typing:\nrock / r\npaper / p\nscissors / s "
+  );
   playerChoice = playerChoice.toLocaleLowerCase();
   if (
     playerChoice === "rock" ||
+    playerChoice === "r" ||
     playerChoice === "paper" ||
-    playerChoice === "scissors"
+    playerChoice === "p" ||
+    playerChoice === "scissors" ||
+    playerChoice === "s"
   ) {
     return playerChoice;
   } else return alert("Your input was invalid, try again") + getPlayerChoice();
@@ -50,9 +55,15 @@ function battle() {
   let playerWeapon = getPlayerChoice();
   let computerWeapon = getComputerChoice();
   if (
-    (playerWeapon === "rock" && computerWeapon === "scissors") ||
-    (playerWeapon === "paper" && computerWeapon === "rock") ||
-    (playerWeapon === "scissors" && computerWeapon === "paper")
+    playerWeapon === "rock" ||
+    ("r" && computerWeapon === "scissors") ||
+    "s" ||
+    playerWeapon === "paper" ||
+    ("p" && computerWeapon === "rock") ||
+    "r" ||
+    playerWeapon === "scissors" ||
+    ("s" && computerWeapon === "paper") ||
+    "p"
   ) {
     playerScore++;
     alert(
