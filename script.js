@@ -8,18 +8,27 @@ let bestOf5Btn = document.createElement("button");
 let weaponRock = document.createElement("img");
 let weaponPaper = document.createElement("img");
 let weaponScissors = document.createElement("img");
+let tryAgainBtn = document.createElement("button");
 let bestOf = 0;
 const weaponChoices = ["rock", "paper", "scissors"];
 let computerChoice;
 let playerChoice;
 let playerPoints = 0;
 let computerPoints = 0;
-let rounds = 0;
 
 window.onload = function () {
+  newGame();
+};
+
+function newGame() {
+  playerChoice = 0;
+  computerChoice = 0;
+  playerPoints = 0;
+  computerPoints = 0;
+  rounds = 0;
   addWelcomeMessage();
   addBestOfButtons();
-};
+}
 
 function addWelcomeMessage() {
   divContent.appendChild(divForMessage);
@@ -104,7 +113,6 @@ function getComputerChoice() {
 function playRound(playerChoice) {
   removeWeapons();
   getComputerChoice();
-  if (rounds === bestOf) gameOver();
   if (
     (playerChoice === "rock" && computerChoice === "scissors") ||
     (playerChoice === "paper" && computerChoice === "rock") ||
@@ -118,7 +126,6 @@ function playRound(playerChoice) {
 
 function playerWins() {
   playerPoints++;
-  rounds++;
   addWinMessage();
 }
 
@@ -128,14 +135,18 @@ function addWinMessage() {
   message1.classList.add("greenText");
   divForMessage.appendChild(message1);
   divForMessage.appendChild(message2);
-  setTimeout(function () {
-    playerWeaponSelection();
-  }, 3000);
+  if (playerPoints === bestOf)
+    setTimeout(function () {
+      gameOver();
+    }, 2500);
+  else
+    setTimeout(function () {
+      playerWeaponSelection();
+    }, 2500);
 }
 
 function computerWins() {
   computerPoints++;
-  rounds++;
   addLoseMessage();
 }
 
@@ -145,9 +156,14 @@ function addLoseMessage() {
   message1.classList.add("redText");
   divForMessage.appendChild(message1);
   divForMessage.appendChild(message2);
-  setTimeout(function () {
-    playerWeaponSelection();
-  }, 3000);
+  if (computerPoints === bestOf)
+    setTimeout(function () {
+      gameOver();
+    }, 2500);
+  else
+    setTimeout(function () {
+      playerWeaponSelection();
+    }, 2500);
 }
 
 function tieGame() {
@@ -162,7 +178,7 @@ function addTieMessage() {
   divForMessage.appendChild(message2);
   setTimeout(function () {
     playerWeaponSelection();
-  }, 3000);
+  }, 2500);
 }
 
 function addPointsMessage() {
@@ -174,3 +190,36 @@ function addPointsMessage() {
     computerPoints;
 }
 
+function gameOver() {
+  message1.classList.remove("greenText");
+  message1.classList.remove("redText");
+  addGameOverMessage();
+  setTimeout(function () {
+    addTryAgain();
+  }, 4000);
+}
+
+function addGameOverMessage() {
+  message1.textContent = "GAME OVER";
+  message1.style.fontSize = "80px";
+  addPointsMessage();
+  divForMessage.appendChild(message1);
+  divForMessage.appendChild(message2);
+}
+
+function addTryAgain() {
+  message1.style.fontSize = "30px";
+  message1.textContent = "TRY AGAIN?";
+  message2.textContent = "Click the button to continue: ";
+  divForMessage.appendChild(message1);
+  divForMessage.appendChild(message2);
+
+  tryAgainBtn.textContent = "Play";
+  tryAgainBtn.classList.add("defaultStyle");
+  divForMessage.appendChild(tryAgainBtn);
+
+  tryAgainBtn.addEventListener("click", () => {
+    divForMessage.removeChild(tryAgainBtn);
+    newGame();
+  });
+}
