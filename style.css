@@ -14,13 +14,27 @@ body {
   border: double gold 3px;
   padding: 8px;
   margin: 5px;
-  transition: 0.5s;
+  transition: 0.3s;
+}
+
+.weaponStyle {
+  width: 200px;
+  height: 200px;
+  margin: 30px;
+  transition: 0.3s;
+}
+
+.weaponStyle:hover {
+  cursor: pointer;
+  width: 220px;
+  height: 220px;
+  transition: 0.3s;
 }
 
 button:hover {
   cursor: pointer;
   font-size: 25px;
-  transition: 0.5s;
+  transition: 0.3s;
 }
 
 #header {
