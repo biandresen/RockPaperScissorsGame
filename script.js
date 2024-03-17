@@ -3,6 +3,7 @@ let divContent = document.getElementById("content");
 let divForMessage = document.createElement("div");
 let message1 = document.createElement("h1");
 let message2 = document.createElement("h3");
+let message3 = document.createElement("h3");
 let bestOf1Btn = document.createElement("button");
 let bestOf3Btn = document.createElement("button");
 let bestOf5Btn = document.createElement("button");
@@ -151,7 +152,8 @@ function addWinMessage() {
   addPointsMessage();
   message1.classList.add("greenText");
   divForMessage.appendChild(message1);
-  divForMessage.appendChild(message2);
+  divForMessage.appendChild(message3);
+  divForMessage.removeChild(message2);
   if (playerPoints === bestOf)
     setTimeout(function () {
       gameOver();
@@ -172,7 +174,8 @@ function addLoseMessage() {
   addPointsMessage();
   message1.classList.add("redText");
   divForMessage.appendChild(message1);
-  divForMessage.appendChild(message2);
+  divForMessage.appendChild(message3);
+  divForMessage.removeChild(message2);
   if (computerPoints === bestOf)
     setTimeout(function () {
       gameOver();
@@ -192,14 +195,15 @@ function addTieMessage() {
   message1.textContent = "TIE";
   addPointsMessage();
   divForMessage.appendChild(message1);
-  divForMessage.appendChild(message2);
+  divForMessage.removeChild(message2);
+  divForMessage.appendChild(message3);
   setTimeout(function () {
     playerWeaponSelection();
   }, 2500);
 }
 
 function addPointsMessage() {
-  message2.innerHTML =
+  message3.innerHTML =
     "Player - " +
     playerPoints +
     "<div></div>" +
@@ -213,7 +217,7 @@ function gameOver() {
   addGameOverMessage();
   setTimeout(function () {
     addTryAgain();
-  }, 5000);
+  }, 3500);
 }
 
 function addGameOverMessage() {
@@ -221,13 +225,14 @@ function addGameOverMessage() {
   message1.style.fontSize = "80px";
   addPointsMessage();
   divForMessage.appendChild(message1);
-  divForMessage.appendChild(message2);
+  divForMessage.removeChild(message3);
 }
 
 function addTryAgain() {
   message1.style.fontSize = "30px";
   message1.textContent = "TRY AGAIN?";
   message2.textContent = "Click the button to continue: ";
+  divForMessage.appendChild(message3);
   divForMessage.appendChild(message1);
   divForMessage.appendChild(message2);
 
@@ -237,6 +242,7 @@ function addTryAgain() {
 
   tryAgainBtn.addEventListener("click", () => {
     divForMessage.removeChild(tryAgainBtn);
+    divForMessage.removeChild(message3);
     newGame();
   });
 }
