@@ -23,10 +23,10 @@ let computerPoints = 0;
 let bestOf = 0;
 
 //AUDIO: PLAY AMBIENT
-ambientSound.play();
 ambientSound.loop = true;
 ambientSound.volume = 0.1;
 speakerIcon.addEventListener("click", function () {
+  ambientSound.play();
   ambientSound.muted = !ambientSound.muted; // Toggle muted state
 });
 

@@ -7,7 +7,7 @@ body {
 }
 
 #top {
-  font-size: 8px;
+  font-size: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,12 +76,12 @@ button:hover {
   margin: 0px;
   padding: 0px;
   cursor: pointer;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   transition: 0.3s;
 }
 
 #speakerIcon:hover {
-  width: 40px;
+  width: 50px;
   transition: 0.3s;
 }
