@@ -24,7 +24,7 @@ let bestOf = 0;
 
 //AUDIO: PLAY AMBIENT
 ambientSound.loop = true;
-ambientSound.volume = 0.1;
+ambientSound.volume = 0.3;
 speakerIcon.addEventListener("click", function () {
   ambientSound.play();
   ambientSound.muted = !ambientSound.muted; // Toggle muted state
