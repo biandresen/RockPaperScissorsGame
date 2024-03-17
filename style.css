@@ -6,6 +6,16 @@ body {
   background-repeat: no-repeat;
 }
 
+.defaultStyle {
+  font-family: "Calistoga", serif;
+  font-size: 20px;
+  background-color: rgb(147, 82, 20);
+  border-radius: 1rem;
+  border: double gold 3px;
+  padding: 8px;
+  margin: 5px;
+}
+
 #header {
   display: flex;
   align-items: center;
