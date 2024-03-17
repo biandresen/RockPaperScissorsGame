@@ -10,11 +10,19 @@ let weaponPaper = document.createElement("img");
 let weaponScissors = document.createElement("img");
 let tryAgainBtn = document.createElement("button");
 let bestOf = 0;
+const ambientSound = new Audio("./audio/ambientSound.mp3");
+const audioRock = new Audio("./audio/rockSound.mp3");
+const audioPaper = new Audio("./audio/paperSound.mp3");
+const audioScissors = new Audio("./audio/scissorsSound.mp3");
 const weaponChoices = ["rock", "paper", "scissors"];
 let computerChoice;
 let playerChoice;
 let playerPoints = 0;
 let computerPoints = 0;
+
+ambientSound.play();
+ambientSound.loop = true;
+ambientSound.volume = 0.1;
 
 window.onload = function () {
   newGame();
@@ -111,6 +119,9 @@ function getComputerChoice() {
 }
 
 function playRound(playerChoice) {
+  if (playerChoice === "rock") audioRock.play();
+  if (playerChoice === "paper") audioPaper.play();
+  if (playerChoice === "scissors") audioScissors.play();
   removeWeapons();
   getComputerChoice();
   if (
@@ -196,7 +207,7 @@ function gameOver() {
   addGameOverMessage();
   setTimeout(function () {
     addTryAgain();
-  }, 4000);
+  }, 5000);
 }
 
 function addGameOverMessage() {
