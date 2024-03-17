@@ -8,10 +8,13 @@ let bestOf5Btn = document.createElement("button");
 let weaponRock = document.createElement("img");
 let weaponPaper = document.createElement("img");
 let weaponScissors = document.createElement("img");
-let bestOf;
+let bestOf = 0;
 const weaponChoices = ["rock", "paper", "scissors"];
 let computerChoice;
 let playerChoice;
+let playerPoints = 0;
+let computerPoints = 0;
+let rounds = 0;
 
 window.onload = function () {
   addWelcomeMessage();
@@ -65,12 +68,14 @@ function removeBestOfButtons() {
 }
 
 function playerWeaponSelection() {
+  addWeapons();
   addWeaponChoiceMessage();
   removeBestOfButtons();
-  addWeapons();
 }
 
 function addWeapons() {
+  message1.classList.remove("greenText");
+  message1.classList.remove("redText");
   weaponRock.src = "./img/rock.png";
   weaponPaper.src = "./img/paper.png";
   weaponScissors.src = "./img/scissors.png";
@@ -99,6 +104,7 @@ function getComputerChoice() {
 function playRound(playerChoice) {
   removeWeapons();
   getComputerChoice();
+  if (rounds === bestOf) gameOver();
   if (
     (playerChoice === "rock" && computerChoice === "scissors") ||
     (playerChoice === "paper" && computerChoice === "rock") ||
@@ -109,3 +115,62 @@ function playRound(playerChoice) {
     tieGame();
   } else computerWins();
 }
+
+function playerWins() {
+  playerPoints++;
+  rounds++;
+  addWinMessage();
+}
+
+function addWinMessage() {
+  message1.textContent = "YOU WON!";
+  addPointsMessage();
+  message1.classList.add("greenText");
+  divForMessage.appendChild(message1);
+  divForMessage.appendChild(message2);
+  setTimeout(function () {
+    playerWeaponSelection();
+  }, 3000);
+}
+
+function computerWins() {
+  computerPoints++;
+  rounds++;
+  addLoseMessage();
+}
+
+function addLoseMessage() {
+  message1.textContent = "YOU LOST";
+  addPointsMessage();
+  message1.classList.add("redText");
+  divForMessage.appendChild(message1);
+  divForMessage.appendChild(message2);
+  setTimeout(function () {
+    playerWeaponSelection();
+  }, 3000);
+}
+
+function tieGame() {
+  rounds++;
+  addTieMessage();
+}
+
+function addTieMessage() {
+  message1.textContent = "TIE";
+  addPointsMessage();
+  divForMessage.appendChild(message1);
+  divForMessage.appendChild(message2);
+  setTimeout(function () {
+    playerWeaponSelection();
+  }, 3000);
+}
+
+function addPointsMessage() {
+  message2.innerHTML =
+    "Player - " +
+    playerPoints +
+    "<div></div>" +
+    " Computer - " +
+    computerPoints;
+}
+

@@ -37,6 +37,14 @@ button:hover {
   transition: 0.3s;
 }
 
+.greenText {
+  color: rgb(0, 113, 0);
+}
+
+.redText {
+  color: red;
+}
+
 #header {
   display: flex;
   align-items: center;
