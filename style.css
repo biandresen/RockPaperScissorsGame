@@ -14,6 +14,13 @@ body {
   border: double gold 3px;
   padding: 8px;
   margin: 5px;
+  transition: 0.5s;
+}
+
+button:hover {
+  cursor: pointer;
+  font-size: 25px;
+  transition: 0.5s;
 }
 
 #header {
