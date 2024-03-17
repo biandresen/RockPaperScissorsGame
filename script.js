@@ -1,3 +1,4 @@
+//VARIABLE DECLARATION
 let divContent = document.getElementById("content");
 let divForMessage = document.createElement("div");
 let message1 = document.createElement("h1");
@@ -9,7 +10,7 @@ let weaponRock = document.createElement("img");
 let weaponPaper = document.createElement("img");
 let weaponScissors = document.createElement("img");
 let tryAgainBtn = document.createElement("button");
-let bestOf = 0;
+let speakerIcon = document.getElementById("speakerIcon");
 const ambientSound = new Audio("./audio/ambientSound.mp3");
 const audioRock = new Audio("./audio/rockSound.mp3");
 const audioPaper = new Audio("./audio/paperSound.mp3");
@@ -19,10 +20,15 @@ let computerChoice;
 let playerChoice;
 let playerPoints = 0;
 let computerPoints = 0;
+let bestOf = 0;
 
+//AUDIO: PLAY AMBIENT
 ambientSound.play();
 ambientSound.loop = true;
 ambientSound.volume = 0.1;
+speakerIcon.addEventListener("click", function () {
+  ambientSound.muted = !ambientSound.muted; // Toggle muted state
+});
 
 window.onload = function () {
   newGame();

@@ -6,6 +6,16 @@ body {
   background-repeat: no-repeat;
 }
 
+#top {
+  font-size: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  padding: 0px;
+  height: 25px;
+}
+
 .defaultStyle {
   font-family: "Calistoga", serif;
   font-size: 20px;
@@ -60,4 +70,18 @@ button:hover {
   border-radius: 1rem;
   border: double gold 3px;
   background-color: rgb(147, 82, 20);
+}
+
+#speakerIcon {
+  margin: 0px;
+  padding: 0px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  transition: 0.3s;
+}
+
+#speakerIcon:hover {
+  width: 40px;
+  transition: 0.3s;
 }
