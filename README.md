@@ -1,5 +1,7 @@
 # rock_paper_scissors_game
 
+<a target="_blank" href="https://biandresen.github.io/RockPaperScissorsGame/">Live server</a>
+
 The Odin Project Web Development 101
 Project: Rock Paper Scissors
 Simple implementation of Rock Paper Scissors game from The Odin Project curriculum.
